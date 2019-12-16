@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/connection');
 const router = express.Router();
 const users = db.get('user');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 users.createIndex('username', { unique: true });
 
