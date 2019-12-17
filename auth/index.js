@@ -60,6 +60,7 @@ router.post('/login',async (req,res,next)=>{
 
 router.post('/register', async (req, res, next) => {
     const username = req.body.username;
+    const name = req.body.name;
     try {
         const check = await users.findOne({ username });
         if (check) {
@@ -76,7 +77,8 @@ router.post('/register', async (req, res, next) => {
                 else {
                     const user = {
                         username: req.body.username,
-                        password: hash
+                        password: hash,
+                        name:req.body.name
                     }
                     users.insert(user);
                     res.json({
